@@ -1,19 +1,148 @@
-<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#f8f3ea"><title>우주의 첫번째 생일</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet"><link rel="stylesheet" href="styles.css"></head><body>
-<div id="opening" class="opening"><div class="scene one"><small>2025.08.23</small><h1>우주가 태어난 날</h1></div><div class="scene two"><small>그리고</small><h2>365일이 흘렀습니다.</h2></div></div>
-<button id="musicBtn" class="music" aria-label="배경음악 재생">♪</button><audio id="bgm" loop><source src="assets/music/background.mp3" type="audio/mpeg"></audio>
-<main>
-<section class="hero"><div class="photo hero-photo" data-photo="assets/images/hero.webp"><span>대표 사진<br><small>hero.webp</small></span></div><div class="veil"></div><div class="hero-copy"><p>돌잔치에 초대합니다</p><h1>우주의<br>첫번째 생일</h1><strong>2026.08.22 · SAT · 17:00</strong></div><a href="#invite" class="scroll">아래로<i></i></a></section>
-<section id="invite" class="section invite reveal"><p class="kicker">초대의 글</p><h2>첫 번째 계절을 지나<br>어느새 한 살이 된 우주.</h2><hr><p>사랑으로 채워진 소중한 첫걸음의 순간을<br>함께 축복해 주시면 더없이 큰 기쁨이 되겠습니다.<br><br>귀한 걸음으로 우주의 첫번째 생일을<br>함께 빛내 주세요.</p><b>아빠 전부환 · 엄마 최성혜</b></section>
-<section class="section intro reveal"><p class="kicker">우주의 첫 번째 계절</p><h2>365일의 사랑으로<br>자라난 작은 기적</h2></section>
-<section class="story">
-<article class="chapter reveal"><div class="chapter-copy"><em>01 · 봄</em><h3>세상은 조금 더<br>따뜻해졌습니다.</h3><p>우주가 우리에게 왔으니까요.</p></div><div class="photo" data-photo="assets/images/story-01.webp"><span>봄 사진</span></div></article>
-<article class="chapter reveal"><div class="chapter-copy"><em>02 · 여름</em><h3>조금씩<br>웃음이 늘었습니다.</h3><p>어느새 우리의 하루는 우주로 가득 찼습니다.</p></div><div class="photo" data-photo="assets/images/story-02.webp"><span>여름 사진</span></div></article>
-<article class="chapter reveal"><div class="chapter-copy"><em>03 · 가을</em><h3>매일 조금씩<br>자라났습니다.</h3><p>시간은 참 빠르게 흘렀습니다.</p></div><div class="photo" data-photo="assets/images/story-03.webp"><span>가을 사진</span></div></article>
-<article class="chapter reveal"><div class="chapter-copy"><em>04 · 겨울</em><h3>사랑으로 채워진<br>첫 번째 계절.</h3><p>그리고 첫번째 생일이 찾아왔습니다.</p></div><div class="photo" data-photo="assets/images/story-04.webp"><span>겨울 사진</span></div></article>
-</section>
-<section class="section gallery-wrap"><p class="kicker">한 줄의 기록</p><h2>우주와 함께한 순간들</h2><div class="gallery" id="gallery"></div></section>
-<section class="movie reveal"><p class="kicker">우주의 첫 번째 영화</p><h2>365일의 이야기</h2><button id="movieBtn">▶<b>영상 보기</b><small>영상 파일 연결 예정</small></button></section>
-<section class="section event reveal"><p class="kicker">우주의 첫번째 생일</p><h2>소중한 날, 함께해 주세요</h2><div class="cards"><div><i>◷</i><small>일시</small><b>2026년 8월 22일 토요일</b><span>오후 5시</span></div><div><i>⌖</i><small>장소</small><b>더파티 프리미엄 해운대점</b><span>스카이룸</span></div></div><p>부산 해운대구 해운대해변로 298번길 24<br>팔레드시즈 지하 1층 · 해운대역 3번 출구</p><div class="actions"><button data-copy="더파티 프리미엄 해운대점">장소명 복사</button><a href="https://map.kakao.com/?q=더파티%20프리미엄%20해운대점" target="_blank" rel="noopener">카카오맵</a></div></section>
-<section class="section letter-wrap reveal"><p class="kicker">우주에게</p><h2>부모님의 편지</h2><button id="letterBtn" class="envelope">✉<span>편지 열기</span></button><article id="letter" hidden><p>사랑하는 우주에게.</p><p>너와 함께한 첫 365일은<br>우리에게도 가장 특별한 계절이었단다.</p><p>네가 처음 웃던 날도,<br>작은 손으로 우리를 꼭 잡아주던 날도,<br>모두 오래도록 마음에 간직할게.</p><p>건강하고 따뜻한 사람으로 자라길 바라며,<br>언제나 네 곁에서 가장 든든한 편이 되어줄게.</p><b>사랑하는 엄마, 아빠가.</b></article></section>
-<footer><p>우리의 소중한 하루를<br>함께해 주셔서 감사합니다.</p><b>전부환 · 최성혜<br><span>그리고 우주</span></b><small>2026.08.22</small></footer>
-</main><div id="lightbox" hidden><button>×</button><div class="photo"></div><p></p></div><div id="toast"></div><script src="script.js"></script></body></html>
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#fcfaf6">
+  <meta name="description" content="우주의 첫번째 생일에 초대합니다.">
+  <title>우주의 첫번째 생일</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="opening" class="opening" aria-hidden="true">
+    <div class="opening-glow"></div>
+    <div class="opening-content">
+      <p>2025.08.23</p>
+      <h1>우주가 태어난 날</h1>
+      <span></span>
+      <strong><b id="dayCounter">1</b>일의 사랑</strong>
+    </div>
+  </div>
+
+  <button id="musicBtn" class="music" aria-label="배경음악 재생 또는 일시정지" aria-pressed="false">
+    <span class="disc">♪</span><small>music</small>
+  </button>
+  <audio id="bgm" loop preload="none"><source src="assets/music/background.mp3" type="audio/mpeg"></audio>
+
+  <main>
+    <section class="hero" aria-label="초대장 표지">
+      <img class="hero-image" src="assets/images/hero.webp" alt="우주의 돌 사진">
+      <div class="hero-light"></div>
+      <div class="sun-dust" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+      <div class="hero-copy">
+        <p>OUR LITTLE SUNSHINE</p>
+        <h1>우주의<br><span>첫번째 생일</span></h1>
+        <div class="hero-rule"></div>
+        <strong>2026. 08. 22 · SAT · 5:00 PM</strong>
+        <small>돌잔치에 초대합니다</small>
+      </div>
+      <a href="#invite" class="scroll-cue" aria-label="초대의 글로 이동"><span></span>SCROLL</a>
+    </section>
+
+    <section id="invite" class="section invite reveal">
+      <p class="eyebrow">INVITATION</p>
+      <h2>한 살이 된 우주</h2>
+      <div class="tiny-flower" aria-hidden="true">✦</div>
+      <p class="body-copy">첫 번째 계절을 지나 어느새 한 살이 된 우주.<br>사랑으로 채워진 소중한 첫걸음의 순간을<br>함께 축복해 주시면 더없이 큰 기쁨이 되겠습니다.</p>
+      <p class="parents">아빠 전부환 <i>·</i> 엄마 최성혜</p>
+    </section>
+
+    <section class="section story-intro reveal">
+      <p class="eyebrow">FOUR SEASONS</p>
+      <h2>우주의 첫 번째 계절</h2>
+      <p>365일 동안 우리에게 찾아온<br>작고 반짝이는 순간들</p>
+    </section>
+
+    <section class="story" aria-label="우주의 성장 이야기">
+      <article class="chapter spring reveal">
+        <div class="chapter-copy"><em>01</em><small>봄</small><h3>세상은 조금 더<br>따뜻해졌습니다.</h3><p>우주가 우리에게 왔으니까요.</p></div>
+        <figure><img src="assets/images/story-01.webp" alt="태어난 직후의 우주" loading="lazy"><figcaption>처음 만난 봄</figcaption></figure>
+      </article>
+      <article class="chapter summer reveal">
+        <div class="chapter-copy"><em>02</em><small>여름</small><h3>조금씩<br>웃음이 늘었습니다.</h3><p>우리의 하루는 우주로 가득 찼습니다.</p></div>
+        <figure><img src="assets/images/story-02.webp" alt="가족과 함께한 우주" loading="lazy"><figcaption>함께여서 더 따뜻한 날</figcaption></figure>
+      </article>
+      <article class="chapter autumn reveal">
+        <div class="chapter-copy"><em>03</em><small>가을</small><h3>매일 조금씩<br>자라났습니다.</h3><p>작은 변화도 모두 소중한 기록이 되었습니다.</p></div>
+        <figure><img src="assets/images/story-03.webp" alt="백일 무렵의 우주" loading="lazy"><figcaption>웃음이 피어나던 날</figcaption></figure>
+      </article>
+      <article class="chapter winter reveal">
+        <div class="chapter-copy"><em>04</em><small>겨울</small><h3>사랑으로 채워진<br>첫 번째 계절.</h3><p>그리고 첫 번째 생일이 찾아왔습니다.</p></div>
+        <figure><img src="assets/images/story-04.webp" alt="돌을 맞은 우주" loading="lazy"><figcaption>첫 번째 생일을 기다리며</figcaption></figure>
+      </article>
+    </section>
+
+    <section class="section gallery-wrap">
+      <div class="section-head reveal"><p class="eyebrow">OUR MOMENTS</p><h2>우주와 함께한 순간들</h2><p>사진을 누르면 크게 볼 수 있어요.</p></div>
+      <div class="gallery" id="gallery">
+        <button class="g-big reveal" data-src="assets/images/gallery-01.webp" data-caption="오늘도 우리를 웃게 해준 우주"><img src="assets/images/gallery-01.webp" alt="우주의 성장 사진 1" loading="lazy"></button>
+        <div class="g-pair">
+          <button class="reveal" data-src="assets/images/gallery-02.webp" data-caption="작은 손에 담긴 큰 행복"><img src="assets/images/gallery-02.webp" alt="우주의 성장 사진 2" loading="lazy"></button>
+          <button class="reveal" data-src="assets/images/gallery-03.webp" data-caption="사랑은 하루하루 자라났습니다"><img src="assets/images/gallery-03.webp" alt="우주의 성장 사진 3" loading="lazy"></button>
+        </div>
+        <blockquote class="reveal">가장 작은 사람이<br><b>가장 큰 행복</b>을 가져왔습니다.</blockquote>
+        <button class="g-wide reveal" data-src="assets/images/gallery-04.webp" data-caption="우리의 모든 계절"><img src="assets/images/gallery-04.webp" alt="우주의 성장 사진 4" loading="lazy"></button>
+        <div class="g-pair offset">
+          <button class="reveal" data-src="assets/images/gallery-05.webp" data-caption="환하게 웃던 어느 날"><img src="assets/images/gallery-05.webp" alt="우주의 성장 사진 5" loading="lazy"></button>
+          <button class="reveal" data-src="assets/images/gallery-06.webp" data-caption="첫 번째 생일을 앞두고"><img src="assets/images/gallery-06.webp" alt="우주의 성장 사진 6" loading="lazy"></button>
+        </div>
+      </div>
+    </section>
+
+    <section class="movie reveal">
+      <button id="movieBtn" class="movie-album" aria-label="우주의 성장 영상 재생">
+        <span class="movie-cover" aria-hidden="true">
+          <img src="assets/images/story-04.webp" alt="">
+          <i class="movie-wash"></i>
+          <span class="movie-badge">FIRST YEAR FILM</span>
+          <span class="movie-play">▶</span>
+          <strong>365일의 이야기</strong>
+          <small>2025.08.23 — 2026.08.22</small>
+        </span>
+        <span class="movie-copy">
+          <span class="eyebrow">OUR FIRST MOVIE</span>
+          <b>우주와 함께한 첫해의 순간을<br>짧은 영상에 담았습니다.</b>
+          <em>영상 재생하기 <i>→</i></em>
+        </span>
+      </button>
+    </section>
+
+    <section class="section event reveal">
+      <p class="eyebrow">SAVE THE DATE</p>
+      <h2>소중한 날,<br>함께해 주세요.</h2>
+      <div class="date-display"><strong>22</strong><span>AUG<br>2026</span><i>SAT</i></div>
+      <div class="event-card">
+        <dl><div><dt>일시</dt><dd>2026년 8월 22일 토요일<br><b>오후 5시</b></dd></div><div><dt>장소</dt><dd>더파티 프리미엄 해운대점<br><b>스카이룸</b></dd></div></dl>
+        <p>부산 해운대구 해운대해변로 298번길 24<br>팔레드시즈 지하 1층 · 해운대역 3번 출구</p>
+        <div class="actions"><button id="calendarBtn">캘린더 저장</button><a href="https://map.kakao.com/?q=더파티%20프리미엄%20해운대점" target="_blank" rel="noopener">카카오맵 보기</a></div>
+      </div>
+      <button id="shareBtn" class="share-button">초대장 공유하기</button>
+    </section>
+
+    <section class="section letter-wrap reveal">
+      <p class="eyebrow">A LETTER FOR WOOJOO</p><h2>우주에게</h2>
+      <button id="letterBtn" class="envelope" aria-expanded="false"><span class="flap"></span><i>우주에게</i><b>편지 열기</b></button>
+      <article id="letter" class="letter" hidden>
+        <p>사랑하는 우주에게.</p>
+        <p>너와 함께한 첫 365일은<br>우리에게도 가장 특별한 계절이었단다.</p>
+        <p>네가 처음 웃던 날도,<br>작은 손으로 우리를 꼭 잡아주던 날도,<br>모두 오래도록 마음에 간직할게.</p>
+        <p>건강하고 따뜻한 사람으로 자라길 바라며,<br>언제나 네 곁에서 가장 든든한 편이 되어줄게.</p>
+        <b>사랑하는 엄마, 아빠가.</b>
+      </article>
+    </section>
+
+    <footer>
+      <div class="footer-photo"><img src="assets/images/gallery-06.webp" alt="우주의 가족 사진" loading="lazy"></div>
+      <div class="footer-copy"><span>THANK YOU</span><p>우리의 소중한 하루를<br>함께해 주셔서 감사합니다.</p><b>전부환 · 최성혜<br><em>그리고 우주</em></b><small>2026.08.22</small></div>
+    </footer>
+  </main>
+
+  <dialog id="lightbox"><button class="close" aria-label="사진 닫기">×</button><img alt="확대 사진"><p></p></dialog>
+  <dialog id="movieModal"><button class="close" aria-label="영상 닫기">×</button><video controls playsinline preload="metadata"><source src="assets/video/woojoo.mp4" type="video/mp4"></video></dialog>
+  <div id="toast" role="status" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>

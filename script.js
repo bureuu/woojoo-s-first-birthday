@@ -1,1 +1,81 @@
-const $=s=>document.querySelector(s),$$=s=>document.querySelectorAll(s);window.addEventListener('load',()=>{setTimeout(()=>$('#opening').classList.add('hide'),7600);$$('[data-photo]').forEach(el=>{let i=new Image;i.onload=()=>{el.style.backgroundImage=`url(${el.dataset.photo})`;el.querySelector('span')?.remove()};i.src=el.dataset.photo})});const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');io.unobserve(e.target)}}),{threshold:.12});$$('.reveal').forEach(e=>io.observe(e));const captions=['처음 세상을 만난 날.','엄마 아빠를 보고 환하게 웃어준 날.','호기심이 조금씩 커져가던 날.','우리의 하루가 가장 특별했던 날.','오늘도 행복을 알려준 하루.','우리가 가장 많이 웃었던 계절.'];const g=$('#gallery');captions.forEach((c,n)=>{const b=document.createElement('button');const src=`assets/images/gallery-0${n+1}.jpg`;b.innerHTML=`<div class="photo" data-photo="${src}"><span>사진 ${String(n+1).padStart(2,'0')}</span></div>`;b.onclick=()=>{const l=$('#lightbox');l.querySelector('.photo').style.backgroundImage=`url(${src})`;l.querySelector('p').textContent=c;l.hidden=false;document.body.style.overflow='hidden'};g.appendChild(b)});$('#lightbox>button').onclick=()=>{$('#lightbox').hidden=true;document.body.style.overflow=''};$('#letterBtn').onclick=()=>{const l=$('#letter');l.hidden=!l.hidden;if(!l.hidden)l.scrollIntoView({behavior:'smooth',block:'center'})};$('#musicBtn').onclick=async()=>{try{const a=$('#bgm');a.paused?await a.play():a.pause();toast(a.paused?'음악을 멈췄습니다.':'배경음악을 재생합니다.')}catch{toast('background.mp3 파일을 추가해 주세요.')}};$$('[data-copy]').forEach(b=>b.onclick=async()=>{try{await navigator.clipboard.writeText(b.dataset.copy);toast('장소명이 복사되었습니다.')}catch{toast(b.dataset.copy)}});$('#movieBtn').onclick=()=>toast('영상 파일은 다음 스프린트에서 연결합니다.');function toast(t){const e=$('#toast');e.textContent=t;e.classList.add('show');clearTimeout(toast.x);toast.x=setTimeout(()=>e.classList.remove('show'),2200)}
+const $ = (s, root=document) => root.querySelector(s);
+const $$ = (s, root=document) => [...root.querySelectorAll(s)];
+
+const opening = $('#opening');
+const counter = $('#dayCounter');
+let count = 1;
+const counterTimer = setInterval(() => {
+  count = Math.min(365, count + Math.ceil((365 - count) / 8));
+  counter.textContent = count;
+  if (count >= 365) clearInterval(counterTimer);
+}, 55);
+setTimeout(() => opening?.classList.add('hide'), 2800);
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+}, {threshold: .12, rootMargin: '0px 0px -35px'});
+$$('.reveal').forEach(el => observer.observe(el));
+
+const toast = $('#toast');
+function showToast(message){
+  toast.textContent = message;
+  toast.classList.add('show');
+  clearTimeout(showToast.timer);
+  showToast.timer = setTimeout(() => toast.classList.remove('show'), 1800);
+}
+
+const musicBtn = $('#musicBtn');
+const bgm = $('#bgm');
+musicBtn.addEventListener('click', async () => {
+  if (!bgm.querySelector('source')?.getAttribute('src')) return showToast('배경음악 파일을 추가해 주세요.');
+  try {
+    if (bgm.paused) { await bgm.play(); musicBtn.classList.add('playing'); musicBtn.setAttribute('aria-pressed','true'); }
+    else { bgm.pause(); musicBtn.classList.remove('playing'); musicBtn.setAttribute('aria-pressed','false'); }
+  } catch { showToast('배경음악 파일이 아직 연결되지 않았습니다.'); }
+});
+bgm.addEventListener('error', () => showToast('배경음악 파일이 아직 연결되지 않았습니다.'));
+
+const lightbox = $('#lightbox');
+$$('#gallery button').forEach(button => button.addEventListener('click', () => {
+  $('img', lightbox).src = button.dataset.src;
+  $('p', lightbox).textContent = button.dataset.caption || '';
+  lightbox.showModal();
+}));
+$('.close', lightbox).addEventListener('click', () => lightbox.close());
+lightbox.addEventListener('click', e => { if (e.target === lightbox) lightbox.close(); });
+
+const movieModal = $('#movieModal');
+const movie = $('video', movieModal);
+$('#movieBtn').addEventListener('click', () => movieModal.showModal());
+$('.close', movieModal).addEventListener('click', () => { movie.pause(); movieModal.close(); });
+movieModal.addEventListener('click', e => { if (e.target === movieModal) { movie.pause(); movieModal.close(); } });
+
+const letterBtn = $('#letterBtn');
+const letter = $('#letter');
+letterBtn.addEventListener('click', () => {
+  const open = letter.hidden;
+  letter.hidden = !open;
+  letterBtn.classList.toggle('open', open);
+  letterBtn.setAttribute('aria-expanded', String(open));
+  $('b', letterBtn).textContent = open ? '편지 닫기' : '편지 열기';
+  if (open) setTimeout(() => letter.scrollIntoView({behavior:'smooth', block:'center'}), 200);
+});
+
+$('#calendarBtn').addEventListener('click', () => {
+  const ics = `BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//WOOJOO//FIRST BIRTHDAY//KO\r\nBEGIN:VEVENT\r\nUID:woojoo-first-birthday-20260822\r\nDTSTAMP:20260729T120000Z\r\nDTSTART:20260822T080000Z\r\nDTEND:20260822T100000Z\r\nSUMMARY:우주의 첫번째 생일\r\nLOCATION:더파티 프리미엄 해운대점 스카이룸\r\nDESCRIPTION:우주의 첫번째 생일에 초대합니다.\r\nEND:VEVENT\r\nEND:VCALENDAR`;
+  const url = URL.createObjectURL(new Blob([ics], {type:'text/calendar;charset=utf-8'}));
+  const a = document.createElement('a'); a.href = url; a.download = '우주의_첫번째_생일.ics'; a.click(); URL.revokeObjectURL(url);
+  showToast('캘린더 파일을 저장했습니다.');
+});
+
+$('#shareBtn').addEventListener('click', async () => {
+  const data = {title:'우주의 첫번째 생일', text:'2026년 8월 22일, 우주의 첫번째 생일에 초대합니다.', url:location.protocol.startsWith('http') ? location.href : undefined};
+  try {
+    if (navigator.share) await navigator.share(data);
+    else { await navigator.clipboard.writeText(location.href); showToast('초대장 주소를 복사했습니다.'); }
+  } catch (error) { if (error.name !== 'AbortError') showToast('공유 기능을 사용할 수 없습니다.'); }
+});
+
+window.addEventListener('keydown', e => {
+  if (e.key === 'Escape') { if (lightbox.open) lightbox.close(); if (movieModal.open) { movie.pause(); movieModal.close(); } }
+});

@@ -1,3 +1,15 @@
+# Sprint 12.5 — Content Polish
+
+- `우주에게` 편지 섹션 전체 삭제
+- 나머지 섹션 구성/순서 유지
+- Easy Edit (`content.js`) 유지
+- `첫번째` → `첫 번째` 표기 통일
+- `content.js`의 `\n` 줄바꿈이 실제 화면에 정확히 반영되도록 수정
+- 한글 단어가 모바일에서 어색하게 중간 분리되지 않도록 `word-break: keep-all` 적용
+- 제목/본문/장소 안내/영상 제목의 글꼴 및 줄간격 체계 점검
+
+기존과 동일하게 문구와 사진은 `content.js`에서 수정하세요.
+
 # 우주의 첫 번째 생일 — Sprint 12.4 Easy Edit
 
 Sprint 12.3의 디자인, BGM, Welcome 화면, 단일 성장영상을 그대로 유지하면서

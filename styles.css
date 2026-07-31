@@ -215,3 +215,10 @@ button,.actions a,.scroll-cue{-webkit-tap-highlight-color:transparent}
 @media(max-width:560px){
   #movieBtn.movie-album .movie-cover>strong{left:16px;right:58%;bottom:36px;font-size:19px;line-height:1.32}
 }
+
+
+/* Sprint 12.5 — Korean typography & line-break polish */
+body{word-break:keep-all;overflow-wrap:break-word;-webkit-text-size-adjust:100%;text-rendering:optimizeLegibility}
+h1,h2,h3,.body-copy,.chapter-copy p,.movie-copy,.event-card,.footer-copy{word-break:keep-all;overflow-wrap:break-word}
+.hero-copy h1,.movie-cover>strong,.date-display span{word-break:keep-all}
+@media(max-width:420px){.body-copy{font-size:15px;line-height:2}.chapter-copy h3{font-size:28px}.movie-cover>strong{font-size:23px!important;line-height:1.32!important}.event-card dd{line-height:1.75}}

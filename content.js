@@ -16,7 +16,7 @@ window.WOOJOO_CONTENT = {
   hero: {
     eyebrow: "OUR LITTLE SUNSHINE",
     titleLine1: "우주의",
-    titleLine2: "첫번째 생일",
+    titleLine2: "첫 번째 생일",
     date: "2026. 08. 22 · SAT · 5:00 PM",
     subtitle: "돌잔치에 초대합니다",
     image: "assets/images/hero.webp"
@@ -24,7 +24,7 @@ window.WOOJOO_CONTENT = {
 
   invitation: {
     title: "한 살이 된 우주",
-    body: "첫 사계절을 지나 어느새 한 살이 된 우주.\n사랑으로 채워진 소중한 첫걸음의 순간을\n함께 축복해 주시면 더없이 큰 기쁨이 되겠습니다.",
+    body: "첫 번째 계절을 지나 어느새 한 살이 된 우주.\n사랑으로 채워진 소중한 첫걸음의 순간을\n함께 축복해 주시면 더없이 큰 기쁨이 되겠습니다.",
     father: "전부환",
     mother: "최성혜"
   },
@@ -81,16 +81,6 @@ window.WOOJOO_CONTENT = {
     venueNote: "스카이룸 · 부산 해운대구 해운대해변로 298번길 24",
     copyAddress: "부산 해운대구 해운대해변로 298번길 24 팔레드시즈 지하 1층",
     mapUrl: "https://map.kakao.com/?q=더파티%20프리미엄%20해운대점"
-  },
-
-  letter: {
-    lines: [
-      "사랑하는 우주에게.",
-      "너와 함께한 첫 365일은\n우리에게도 가장 특별한 계절이었단다.",
-      "네가 처음 웃던 날도,\n작은 손으로 우리를 꼭 잡아주던 날도,\n모두 오래도록 마음에 간직할게.",
-      "건강하고 따뜻한 사람으로 자라길 바라며,\n언제나 네 곁에서 가장 든든한 편이 되어줄게."
-    ],
-    signature: "사랑하는 엄마, 아빠가."
   },
 
   footer: {

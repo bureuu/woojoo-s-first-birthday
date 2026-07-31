@@ -8,7 +8,7 @@ const $$ = (s, root=document) => [...root.querySelectorAll(s)];
 const CONTENT = window.WOOJOO_CONTENT || {};
 const withBreaks = (el, value='') => {
   if (!el) return;
-  el.innerHTML = String(value).split('\\n').map(v => v.replaceAll('<','&lt;').replaceAll('>','&gt;')).join('<br>');
+  el.innerHTML = String(value).split(/\n/g).map(v => v.replaceAll('<','&lt;').replaceAll('>','&gt;')).join('<br>');
 };
 
 function applyContent(){
@@ -119,15 +119,6 @@ function applyContent(){
       if (guide[0]) { if (guide[0].querySelector('b')) guide[0].querySelector('b').textContent = c.event.subway; if (guide[0].querySelector('small')) guide[0].querySelector('small').textContent = c.event.subwayNote; }
       if (guide[1]) { if (guide[1].querySelector('b')) guide[1].querySelector('b').textContent = c.event.venue; if (guide[1].querySelector('small')) guide[1].querySelector('small').textContent = c.event.venueNote; }
       const map = $('.actions a', event); if (map) map.href = c.event.mapUrl;
-    }
-  }
-
-  if (c.letter) {
-    const article = $('#letter');
-    if (article) {
-      article.innerHTML = '';
-      (c.letter.lines || []).forEach(line => { const p = document.createElement('p'); withBreaks(p, line); article.appendChild(p); });
-      const sig = document.createElement('b'); sig.textContent = c.letter.signature; article.appendChild(sig);
     }
   }
 
@@ -255,16 +246,6 @@ function closeMovie(){
 $('.close', movieModal).addEventListener('click', closeMovie);
 movieModal.addEventListener('click', e => { if (e.target === movieModal) closeMovie(); });
 
-const letterBtn = $('#letterBtn');
-const letter = $('#letter');
-letterBtn.addEventListener('click', () => {
-  const open = letter.hidden;
-  letter.hidden = !open;
-  letterBtn.classList.toggle('open', open);
-  letterBtn.setAttribute('aria-expanded', String(open));
-  $('b', letterBtn).textContent = open ? '편지 닫기' : '편지 열기';
-  if (open) setTimeout(() => letter.scrollIntoView({behavior:'smooth', block:'center'}), 200);
-});
 
 $('#calendarBtn').addEventListener('click', () => {
   const ics = `BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//WOOJOO//FIRST BIRTHDAY//KO\r\nBEGIN:VEVENT\r\nUID:woojoo-first-birthday-20260822\r\nDTSTAMP:20260729T120000Z\r\nDTSTART:20260822T080000Z\r\nDTEND:20260822T100000Z\r\nSUMMARY:우주의 첫번째 생일\r\nLOCATION:더파티 프리미엄 해운대점 스카이룸\r\nDESCRIPTION:우주의 첫번째 생일에 초대합니다.\r\nEND:VEVENT\r\nEND:VCALENDAR`;
@@ -281,7 +262,7 @@ $('#copyAddressBtn')?.addEventListener('click', async () => {
 });
 
 $('#shareBtn').addEventListener('click', async () => {
-  const data = {title:`${CONTENT.hero?.titleLine1 || '우주의'} ${CONTENT.hero?.titleLine2 || '첫번째 생일'}`, text:`${CONTENT.event?.dateText || '2026년 8월 22일'}, ${CONTENT.hero?.subtitle || '돌잔치에 초대합니다'}`, url:location.protocol.startsWith('http') ? location.href : undefined};
+  const data = {title:`${CONTENT.hero?.titleLine1 || '우주의'} ${CONTENT.hero?.titleLine2 || '첫 번째 생일'}`, text:`${CONTENT.event?.dateText || '2026년 8월 22일'}, ${CONTENT.hero?.subtitle || '돌잔치에 초대합니다'}`, url:location.protocol.startsWith('http') ? location.href : undefined};
   try {
     if (navigator.share) await navigator.share(data);
     else { await navigator.clipboard.writeText(location.href); showToast('초대장 주소를 복사했습니다.'); }

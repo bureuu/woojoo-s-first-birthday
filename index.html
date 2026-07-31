@@ -4,8 +4,19 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="theme-color" content="#fcfaf6">
-  <meta name="description" content="우주의 첫번째 생일에 초대합니다.">
-  <title>우주의 첫번째 생일</title>
+  <meta name="description" content="우주의 소중한 첫돌에 초대합니다. 2026년 8월 22일 토요일 오후 5시">
+  <title>우주의 첫 번째 생일</title>
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="우주의 첫 번째 생일">
+  <meta property="og:description" content="우주의 소중한 첫돌에 초대합니다. 2026년 8월 22일 토요일 오후 5시">
+  <meta property="og:image" content="assets/images/og-thumbnail-v1.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="우주의 첫 번째 생일">
+  <meta name="twitter:description" content="우주의 소중한 첫돌에 초대합니다.">
+  <meta name="twitter:image" content="assets/images/og-thumbnail-v1.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -22,10 +33,10 @@
     </div>
   </div>
 
-  <button id="musicBtn" class="music" aria-label="배경음악 재생 또는 일시정지" aria-pressed="false">
-    <span class="disc">♪</span><small>music</small>
+  <button id="musicBtn" class="music is-pending" aria-label="배경음악 준비 중" aria-pressed="false">
+    <span class="disc">♪</span><small>BGM 준비중</small>
   </button>
-  <audio id="bgm" loop preload="none"><source src="assets/music/background.mp3" type="audio/mpeg"></audio>
+  <audio id="bgm" loop preload="none"></audio>
 
   <main>
     <section class="hero" aria-label="초대장 표지">
@@ -95,11 +106,11 @@
     <section class="movie reveal">
       <button id="movieBtn" class="movie-album" aria-label="우주의 성장 영상 재생">
         <span class="movie-cover" aria-hidden="true">
-          <img src="assets/images/story-04.webp" alt="">
+          <img src="assets/images/movie-poster-v2.jpg" alt="">
           <i class="movie-wash"></i>
-          <span class="movie-badge">FIRST YEAR FILM</span>
+          <span class="movie-badge">WOOJOO · FIRST YEAR FILM</span>
           <span class="movie-play">▶</span>
-          <strong>365일의 이야기</strong>
+          <strong>우주의 첫 번째 성장 이야기</strong>
           <small>2025.08.23 — 2026.08.22</small>
         </span>
         <span class="movie-copy">
@@ -117,7 +128,7 @@
       <div class="event-card">
         <dl><div><dt>일시</dt><dd>2026년 8월 22일 토요일<br><b>오후 5시</b></dd></div><div><dt>장소</dt><dd>더파티 프리미엄 해운대점<br><b>스카이룸</b></dd></div></dl>
         <p>부산 해운대구 해운대해변로 298번길 24<br>팔레드시즈 지하 1층 · 해운대역 3번 출구</p>
-        <div class="actions"><button id="calendarBtn">캘린더 저장</button><a href="https://map.kakao.com/?q=더파티%20프리미엄%20해운대점" target="_blank" rel="noopener">카카오맵 보기</a></div>
+        <div class="venue-guide"><div><span>SUBWAY</span><b>해운대역 3번 출구</b><small>도보 이동 후 팔레드시즈 지하 1층</small></div><div><span>VENUE</span><b>더파티 프리미엄 해운대점</b><small>스카이룸 · 부산 해운대구 해운대해변로 298번길 24</small></div></div><div class="actions"><button id="calendarBtn">캘린더 저장</button><button id="copyAddressBtn">주소 복사</button><a href="https://map.kakao.com/?q=더파티%20프리미엄%20해운대점" target="_blank" rel="noopener">카카오맵 길찾기</a></div>
       </div>
       <button id="shareBtn" class="share-button">초대장 공유하기</button>
     </section>
@@ -141,7 +152,7 @@
   </main>
 
   <dialog id="lightbox"><button class="close" aria-label="사진 닫기">×</button><img alt="확대 사진"><p></p></dialog>
-  <dialog id="movieModal"><button class="close" aria-label="영상 닫기">×</button><video controls playsinline preload="metadata"><source src="assets/video/woojoo.mp4" type="video/mp4"></video></dialog>
+  <dialog id="movieModal"><button class="close" aria-label="영상 닫기">×</button><video id="growthMovie" controls playsinline preload="metadata" poster="assets/images/movie-poster-v2.jpg" data-parts="assets/video/woojoo-part1.mp4,assets/video/woojoo-part2.mp4,assets/video/woojoo-part3.mp4"><source src="assets/video/woojoo-part1.mp4" type="video/mp4"></video></dialog>
   <div id="toast" role="status" aria-live="polite"></div>
   <script src="script.js"></script>
 </body>

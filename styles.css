@@ -134,3 +134,35 @@ button,.actions a,.scroll-cue{-webkit-tap-highlight-color:transparent}
   #movieBtn.movie-album .movie-cover>small{left:19px;bottom:18px}
   #movieBtn.movie-album .movie-play{width:58px;height:58px}
 }
+
+
+/* Sprint 12 Premium Polish */
+.music.is-pending{opacity:.72}.music.is-pending small{font-size:9px;letter-spacing:.04em;white-space:nowrap}.movie-cover img{object-fit:cover;object-position:center}.venue-guide{display:grid;gap:10px;margin:18px 0}.venue-guide>div{padding:15px 16px;border:1px solid rgba(133,105,76,.18);border-radius:16px;background:rgba(255,255,255,.55);text-align:left}.venue-guide span{display:block;font-size:10px;letter-spacing:.18em;color:#a98967;margin-bottom:6px}.venue-guide b{display:block;font-size:14px;color:#4b4037}.venue-guide small{display:block;margin-top:4px;color:#81756a;line-height:1.55}.event-card .actions{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.event-card .actions>*{min-height:45px;display:flex;align-items:center;justify-content:center;border-radius:12px;font:inherit;font-size:12px}.event-card .actions button{border:1px solid rgba(133,105,76,.25);background:#fffaf3;color:#675546}.event-card .actions a{background:#7d6652;color:#fff;text-decoration:none}#movieModal video{width:min(92vw,900px);max-height:82vh;background:#000;border-radius:18px}.reveal{will-change:opacity,transform}.reveal.visible{will-change:auto}@media(max-width:600px){.event-card .actions{grid-template-columns:1fr 1fr}.event-card .actions a{grid-column:1/-1}.movie-cover{aspect-ratio:16/9}.movie-cover img{width:100%;height:100%}}@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}.reveal{opacity:1!important;transform:none!important}}
+
+
+/* Sprint 12.1 — real movie-scene poster */
+#movieBtn.movie-album > .movie-cover > img{
+  object-position:center 30%;
+  filter:saturate(.94) contrast(1.02) brightness(.96);
+  transition:transform .9s cubic-bezier(.2,.7,.2,1),filter .45s ease;
+}
+#movieBtn.movie-album .movie-wash{
+  background:
+    linear-gradient(90deg,rgba(39,31,27,.58) 0%,rgba(39,31,27,.30) 38%,rgba(39,31,27,.04) 69%),
+    linear-gradient(180deg,rgba(255,255,255,.03),rgba(42,31,26,.08) 48%,rgba(42,31,26,.62));
+}
+#movieBtn.movie-album .movie-play{
+  width:70px;height:70px;
+  border:1px solid rgba(255,255,255,.72);
+  box-shadow:0 12px 35px rgba(35,24,18,.28),inset 0 0 0 7px rgba(255,255,255,.22);
+  transition:transform .35s ease,box-shadow .35s ease;
+}
+#movieBtn.movie-album:hover .movie-play{transform:translate(-50%,-50%) scale(1.07);box-shadow:0 16px 42px rgba(35,24,18,.34),inset 0 0 0 7px rgba(255,255,255,.28)}
+#movieBtn.movie-album .movie-badge{backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);letter-spacing:.13em;font-size:9px}
+#movieBtn.movie-album .movie-cover>strong{max-width:68%;line-height:1.25;text-shadow:0 2px 18px rgba(0,0,0,.35)}
+#movieBtn.movie-album:focus-visible{outline:3px solid rgba(201,173,120,.55);outline-offset:5px}
+@media(max-width:560px){
+  #movieBtn.movie-album > .movie-cover > img{object-position:center 26%}
+  #movieBtn.movie-album .movie-cover>strong{max-width:78%;font-size:25px}
+  #movieBtn.movie-album .movie-badge{left:14px;top:14px;font-size:8px}
+}

@@ -26,8 +26,10 @@ function showToast(message){
 
 const musicBtn = $('#musicBtn');
 const bgm = $('#bgm');
+const hasBgm = Boolean(bgm.querySelector('source')?.getAttribute('src'));
+if (!hasBgm) musicBtn.title = '최종 BGM 음원 선정 후 연결됩니다.';
 musicBtn.addEventListener('click', async () => {
-  if (!bgm.querySelector('source')?.getAttribute('src')) return showToast('배경음악 파일을 추가해 주세요.');
+  if (!hasBgm) return showToast('최종 BGM을 선정 중입니다.');
   try {
     if (bgm.paused) { await bgm.play(); musicBtn.classList.add('playing'); musicBtn.setAttribute('aria-pressed','true'); }
     else { bgm.pause(); musicBtn.classList.remove('playing'); musicBtn.setAttribute('aria-pressed','false'); }
@@ -45,10 +47,25 @@ $('.close', lightbox).addEventListener('click', () => lightbox.close());
 lightbox.addEventListener('click', e => { if (e.target === lightbox) lightbox.close(); });
 
 const movieModal = $('#movieModal');
-const movie = $('video', movieModal);
-$('#movieBtn').addEventListener('click', () => movieModal.showModal());
-$('.close', movieModal).addEventListener('click', () => { movie.pause(); movieModal.close(); });
-movieModal.addEventListener('click', e => { if (e.target === movieModal) { movie.pause(); movieModal.close(); } });
+const movie = $('#growthMovie', movieModal);
+const movieParts = (movie.dataset.parts || '').split(',').filter(Boolean);
+let moviePartIndex = 0;
+let bgmWasPlaying = false;
+function loadMoviePart(index, autoplay=false){
+  moviePartIndex = index;
+  movie.src = movieParts[index] || movieParts[0];
+  movie.load();
+  if (autoplay) movie.play().catch(() => {});
+}
+$('#movieBtn').addEventListener('click', () => { movieModal.showModal(); loadMoviePart(0); });
+movie.addEventListener('play', () => { bgmWasPlaying = !bgm.paused; if (bgmWasPlaying) bgm.pause(); });
+movie.addEventListener('ended', () => {
+  if (moviePartIndex < movieParts.length - 1) loadMoviePart(moviePartIndex + 1, true);
+  else if (bgmWasPlaying && hasBgm) bgm.play().catch(() => {});
+});
+function closeMovie(){ movie.pause(); loadMoviePart(0); movieModal.close(); if (bgmWasPlaying && hasBgm) bgm.play().catch(() => {}); }
+$('.close', movieModal).addEventListener('click', closeMovie);
+movieModal.addEventListener('click', e => { if (e.target === movieModal) closeMovie(); });
 
 const letterBtn = $('#letterBtn');
 const letter = $('#letter');
@@ -66,6 +83,13 @@ $('#calendarBtn').addEventListener('click', () => {
   const url = URL.createObjectURL(new Blob([ics], {type:'text/calendar;charset=utf-8'}));
   const a = document.createElement('a'); a.href = url; a.download = '우주의_첫번째_생일.ics'; a.click(); URL.revokeObjectURL(url);
   showToast('캘린더 파일을 저장했습니다.');
+});
+
+
+$('#copyAddressBtn')?.addEventListener('click', async () => {
+  const address = '부산 해운대구 해운대해변로 298번길 24 팔레드시즈 지하 1층';
+  try { await navigator.clipboard.writeText(address); showToast('주소를 복사했습니다.'); }
+  catch { showToast(address); }
 });
 
 $('#shareBtn').addEventListener('click', async () => {

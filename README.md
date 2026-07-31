@@ -1,38 +1,67 @@
-# 우주의 첫 번째 생일 — Sprint 12 Premium Polish
+# 우주의 첫 번째 생일 — Sprint 12.4 Easy Edit
 
-## 반영 내용
-- 실제 성장영상 적용 및 웹 최적화(3개 구간 자동 연속 재생)
-- 영상 포스터 이미지 생성
-- 카카오톡/메신저 공유용 OG 썸네일 및 메타태그 추가
-- 오시는 길 카드 디자인, 주소 복사, 캘린더 저장, 카카오맵 연결
-- 애니메이션과 모바일 접근성 마감
-- 영상 재생 시 BGM 자동 일시정지 구조 적용
+Sprint 12.3의 디자인, BGM, Welcome 화면, 단일 성장영상을 그대로 유지하면서
+**문구와 주요 사진을 `content.js` 한 파일에서 수정할 수 있도록 구조를 개선한 버전**입니다.
 
-## BGM
-저작권 안전한 최종 음원을 아직 포함하지 않았습니다. `assets/music/background.mp3`를 추가한 뒤 `index.html`의 `<audio id="bgm">` 안에 source를 연결하면 됩니다. 추천 분위기: 따뜻한 피아노 + 글로켄슈필, 70~85 BPM, 보컬 없음.
+## 가장 쉬운 수정 방법
 
-## Open Graph URL
-GitHub Pages 배포 주소가 확정되면 `index.html`의 `og:url`, `og:image`를 절대 URL로 바꾸면 카카오톡 호환성이 가장 안정적입니다.
+1. VS Code에서 `content.js`를 엽니다.
+2. 따옴표 안의 문구 또는 이미지 경로만 수정합니다.
+3. 저장합니다.
+4. GitHub Desktop에서 Commit → Push 합니다.
 
+예시:
 
-## Sprint 12.1
-- 성장영상 실제 장면 사진으로 무비 포스터 교체
-- 16:9 웹 전용 포스터 최적화 및 모바일 크롭 보정
-- 포스터 오버레이, 재생 버튼, 포커스/호버 효과 마감
-- 영상 모달 poster 경로 동기화
+```js
+invitation: {
+  title: "한 살이 된 우주",
+  body: "여기에 원하는 초대 문구를 입력하세요."
+}
+```
 
+줄바꿈이 필요하면 `\n`을 사용합니다.
 
-## Sprint 12.2
-- Movie title shortened to `우주의 성장이야기` and resized to avoid the center play button.
-- Replaced the three sequential movie parts with one H.264/AAC MP4 (`assets/video/woojoo-full.mp4`).
-- Kept the original 720×1280 9:16 frame so the full video is visible without cropping or side letterboxing.
-- Added web-friendly `faststart` metadata and simplified movie playback logic.
+```js
+body: "첫 번째 줄\n두 번째 줄"
+```
 
+## 사진 교체
 
-## Sprint 12.3
-- Welcome 화면의 `초대장 열기 ♡` 버튼으로 BGM 재생 시작
-- 업로드된 피아노 MR을 웹 BGM으로 연결
-- BGM 기본 볼륨 28%, fade-in/fade-out 적용
-- 성장영상 재생 시 BGM fade-out/일시정지, 종료 또는 닫기 시 재개
-- 영상 제목을 `우주의 / 성장 이야기` 두 줄로 고정
-- Sprint 12.2 단일 성장영상 구조 유지
+새 사진을 `assets/images/` 폴더에 넣은 뒤 `content.js`의 파일명만 바꿉니다.
+
+```js
+gallery: {
+  items: [
+    { image:"assets/images/new-photo.webp", caption:"새로운 문구" }
+  ]
+}
+```
+
+## 수정 가능한 주요 항목
+
+- Welcome 화면 문구
+- Hero 제목/날짜/대표사진
+- 초대 문구 및 부모 이름
+- 사계절 성장 스토리 문구/사진
+- 갤러리 사진/캡션
+- 성장영상 제목/포스터/영상 파일
+- 일시/장소/주소/지도 링크
+- `우주에게` 편지 전체
+- Footer 문구/사진
+
+## 주의
+
+`content.js`의 `{ }`, `,`, 따옴표 구조는 삭제하지 않는 것이 좋습니다.
+문구만 바꾸는 경우 따옴표 안쪽만 수정하세요.
+
+### 카카오톡/메신저 미리보기
+
+Open Graph(OG) 메타태그는 메신저가 JavaScript를 실행하지 않고 읽기 때문에
+공유 제목/설명/썸네일 변경은 아직 `index.html`의 `<head>` 영역을 직접 수정해야 합니다.
+일반 초대장 화면의 문구/사진은 `content.js`에서 수정하면 됩니다.
+
+## Sprint 12.4
+
+- 방명록/Supabase 기능 없음
+- Sprint 12.3 기능 유지
+- Easy Edit `content.js` 추가

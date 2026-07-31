@@ -148,3 +148,142 @@ $('#shareBtn').addEventListener('click', async () => {
 window.addEventListener('keydown', e => {
   if (e.key === 'Escape') { if (lightbox.open) lightbox.close(); if (movieModal.open) closeMovie(); }
 });
+
+
+// Sprint 12.4 · Supabase guestbook
+(() => {
+  const config = window.WOOJOO_GUESTBOOK;
+  const form = document.querySelector('#guestbookForm');
+  if (!config || !form) return;
+
+  const list = document.querySelector('#guestbookList');
+  const moreBtn = document.querySelector('#guestbookMore');
+  const submitBtn = document.querySelector('#guestbookSubmit');
+  const status = document.querySelector('#guestbookStatus');
+  const nickname = document.querySelector('#guestNickname');
+  const message = document.querySelector('#guestMessage');
+  const messageCount = document.querySelector('#guestMessageCount');
+  const honeypot = document.querySelector('#guestWebsite');
+  const pageSize = 5;
+  let offset = 0;
+  let loading = false;
+
+  const headers = {
+    apikey: config.publishableKey,
+    Authorization: `Bearer ${config.publishableKey}`,
+    'Content-Type': 'application/json'
+  };
+
+  function setStatus(text, isError = false) {
+    status.textContent = text;
+    status.style.color = isError ? '#b76868' : '#9a7d72';
+  }
+
+  function formatDate(value) {
+    try {
+      return new Intl.DateTimeFormat('ko-KR', {
+        year: 'numeric', month: '2-digit', day: '2-digit'
+      }).format(new Date(value));
+    } catch { return ''; }
+  }
+
+  function makeCard(row) {
+    const card = document.createElement('article');
+    card.className = 'guestbook-card';
+    const name = document.createElement('strong');
+    const body = document.createElement('p');
+    const time = document.createElement('time');
+    name.textContent = row.nickname;
+    body.textContent = row.message;
+    time.dateTime = row.created_at || '';
+    time.textContent = formatDate(row.created_at);
+    card.append(name, body, time);
+    return card;
+  }
+
+  async function loadMessages(reset = false) {
+    if (loading) return;
+    loading = true;
+    moreBtn.disabled = true;
+    if (reset) {
+      offset = 0;
+      list.innerHTML = '<p class="guestbook-empty">메시지를 불러오는 중이에요…</p>';
+    }
+    try {
+      const params = new URLSearchParams({
+        select: 'id,nickname,message,created_at',
+        order: 'created_at.desc',
+        limit: String(pageSize),
+        offset: String(offset)
+      });
+      const response = await fetch(`${config.url}/rest/v1/guestbook?${params}`, { headers });
+      if (!response.ok) throw new Error(`load ${response.status}`);
+      const rows = await response.json();
+      if (reset) list.innerHTML = '';
+      rows.forEach(row => list.appendChild(makeCard(row)));
+      offset += rows.length;
+      moreBtn.hidden = rows.length < pageSize;
+      if (offset === 0) {
+        list.innerHTML = '<p class="guestbook-empty">아직 첫 마음을 기다리고 있어요.<br>우주에게 첫 번째 메시지를 남겨주세요 ♡</p>';
+      }
+    } catch (error) {
+      console.error('Guestbook load failed:', error);
+      if (reset) list.innerHTML = '<p class="guestbook-empty">방명록을 불러오지 못했어요.<br>잠시 후 다시 확인해주세요.</p>';
+      moreBtn.hidden = true;
+    } finally {
+      loading = false;
+      moreBtn.disabled = false;
+    }
+  }
+
+  message.addEventListener('input', () => {
+    messageCount.textContent = String(message.value.length);
+  });
+
+  moreBtn.addEventListener('click', () => loadMessages(false));
+
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    if (honeypot.value) return;
+
+    const cleanNickname = nickname.value.trim();
+    const cleanMessage = message.value.trim();
+    if (!cleanNickname || cleanNickname.length > 12) {
+      setStatus('닉네임을 1~12자로 입력해주세요.', true); nickname.focus(); return;
+    }
+    if (!cleanMessage || cleanMessage.length > 100) {
+      setStatus('우주에게 한마디를 1~100자로 입력해주세요.', true); message.focus(); return;
+    }
+
+    const lastSent = Number(localStorage.getItem('woojoo_guestbook_last_sent') || 0);
+    const cooldown = 15000;
+    if (Date.now() - lastSent < cooldown) {
+      setStatus('마음이 잘 도착했어요. 잠시 후 다시 남길 수 있어요 ♡', true); return;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = '마음 전하는 중…';
+    setStatus('');
+    try {
+      const response = await fetch(`${config.url}/rest/v1/guestbook`, {
+        method: 'POST',
+        headers: {...headers, Prefer: 'return=minimal'},
+        body: JSON.stringify({ nickname: cleanNickname, message: cleanMessage })
+      });
+      if (!response.ok) throw new Error(`insert ${response.status}`);
+      localStorage.setItem('woojoo_guestbook_last_sent', String(Date.now()));
+      message.value = '';
+      messageCount.textContent = '0';
+      setStatus('우주에게 따뜻한 마음이 도착했어요 ♡');
+      await loadMessages(true);
+    } catch (error) {
+      console.error('Guestbook insert failed:', error);
+      setStatus('마음을 전하지 못했어요. 잠시 후 다시 시도해주세요.', true);
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = '마음 남기기 ♡';
+    }
+  });
+
+  loadMessages(true);
+})();

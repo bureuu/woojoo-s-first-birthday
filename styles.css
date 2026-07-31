@@ -215,3 +215,41 @@ button,.actions a,.scroll-cue{-webkit-tap-highlight-color:transparent}
 @media(max-width:560px){
   #movieBtn.movie-album .movie-cover>strong{left:16px;right:58%;bottom:36px;font-size:19px;line-height:1.32}
 }
+
+
+/* Sprint 12.4 · Messages for Woojoo */
+.guestbook{margin:46px -8px -10px;padding-top:8px;text-align:center;font-family:"Noto Sans KR",system-ui,sans-serif}
+.guestbook-divider{display:flex;align-items:center;gap:12px;margin:0 10px 38px;color:#c5968e}
+.guestbook-divider:before,.guestbook-divider:after{content:"";height:1px;flex:1;background:linear-gradient(90deg,transparent,#ead8d1)}
+.guestbook-divider:after{background:linear-gradient(90deg,#ead8d1,transparent)}
+.guestbook-divider span{font-size:14px}
+.guestbook-head>span{display:block;color:var(--gold);font-size:9px;letter-spacing:.24em;font-weight:600}
+.guestbook-head h3{margin:10px 0 12px;font:400 25px/1.45 "Gowun Batang",serif;color:var(--brown)}
+.guestbook-head p{margin:0;color:var(--muted);font:400 12px/1.75 "Gowun Batang",serif}
+.guestbook-form{margin:27px auto 0;max-width:430px;text-align:left}
+.guestbook-form label:not(.guestbook-honeypot){display:block;margin-bottom:14px}
+.guestbook-form label>span{display:block;margin:0 3px 7px;color:#8b7569;font-size:10px;letter-spacing:.08em;font-weight:600}
+.guestbook-form input,.guestbook-form textarea{width:100%;border:1px solid #eadfd7;border-radius:15px;background:rgba(255,255,255,.86);padding:13px 14px;color:var(--brown);font:400 13px/1.6 "Noto Sans KR",sans-serif;outline:0;box-shadow:0 4px 16px rgba(91,74,66,.035);transition:border-color .2s,box-shadow .2s,background .2s}
+.guestbook-form textarea{resize:none;min-height:100px}
+.guestbook-form input:focus,.guestbook-form textarea:focus{border-color:#d5b9ad;background:#fff;box-shadow:0 0 0 3px rgba(197,150,142,.10)}
+.guestbook-form label small{display:block;text-align:right;margin:5px 4px 0;color:#aa9a91;font-size:9px}
+.guestbook-form label small b{display:inline;margin:0;color:#c5968e;font:inherit}
+.guestbook-form>button{width:100%;border:0;border-radius:999px;background:var(--brown);color:#fff;padding:13px 18px;font-size:12px;letter-spacing:.03em;cursor:pointer;box-shadow:0 8px 22px rgba(91,74,66,.14);transition:transform .2s,opacity .2s}
+.guestbook-form>button:active{transform:scale(.985)}
+.guestbook-form>button:disabled{opacity:.55;cursor:wait}
+.guestbook-status{min-height:18px;margin:8px 4px 0;text-align:center;color:#9a7d72;font-size:10px;line-height:1.6}
+.guestbook-honeypot{position:absolute!important;left:-9999px!important;width:1px!important;height:1px!important;overflow:hidden!important}
+.guestbook-wall{margin:34px auto 0;max-width:430px;padding-top:24px;border-top:1px dashed #eadbd3}
+.guestbook-wall-head{margin-bottom:13px;text-align:left}
+.guestbook-wall-head span{font:400 13px "Gowun Batang",serif;color:#8c7168}
+.guestbook-list{display:grid;gap:10px}
+.guestbook-card{position:relative;text-align:left;padding:15px 16px 14px;background:linear-gradient(145deg,#fff,#fffaf6);border:1px solid #eee2db;border-radius:17px;box-shadow:0 7px 22px rgba(91,74,66,.05);animation:guestbookIn .45s ease both}
+.guestbook-card:before{content:"♡";position:absolute;right:14px;top:11px;color:#dfc4bc;font-size:11px}
+.guestbook-card strong{display:block;padding-right:24px;color:#80665d;font-size:11px;font-weight:600}
+.guestbook-card p{margin:7px 0 0;color:#675850;font:400 12px/1.7 "Gowun Batang",serif;white-space:pre-wrap;word-break:break-word}
+.guestbook-card time{display:block;margin-top:8px;color:#b2a49c;font-size:8px;letter-spacing:.05em}
+.guestbook-empty{margin:12px 0;color:#a89991;font:400 11px/1.7 "Gowun Batang",serif;text-align:center}
+.guestbook-more{margin:14px auto 0;border:1px solid #e7d9d1;border-radius:999px;background:transparent;color:#8b7167;padding:9px 17px;font-size:10px;cursor:pointer}
+@keyframes guestbookIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@media(max-width:480px){.guestbook{margin-left:-12px;margin-right:-12px}.guestbook-head h3{font-size:23px}.guestbook-form,.guestbook-wall{max-width:100%}}
+@media(prefers-reduced-motion:reduce){.guestbook-card{animation:none}}

@@ -144,43 +144,6 @@
         <p>네가 처음 웃던 날도,<br>작은 손으로 우리를 꼭 잡아주던 날도,<br>모두 오래도록 마음에 간직할게.</p>
         <p>건강하고 따뜻한 사람으로 자라길 바라며,<br>언제나 네 곁에서 가장 든든한 편이 되어줄게.</p>
         <b>사랑하는 엄마, 아빠가.</b>
-
-        <div class="guestbook" id="guestbook">
-          <div class="guestbook-divider"><span>♡</span></div>
-          <header class="guestbook-head">
-            <span>MESSAGES FOR WOOJOO</span>
-            <h3>우주에게 한마디</h3>
-            <p>우주의 첫 번째 생일을 함께해 주신 분들의<br>따뜻한 마음을 남겨주세요.</p>
-          </header>
-
-          <form id="guestbookForm" class="guestbook-form" autocomplete="off">
-            <label>
-              <span>닉네임</span>
-              <input id="guestNickname" name="nickname" type="text" maxlength="12" placeholder="예: 우주이모" required>
-            </label>
-            <label>
-              <span>우주에게 한마디</span>
-              <textarea id="guestMessage" name="message" maxlength="100" rows="4" placeholder="우주에게 따뜻한 한마디를 남겨주세요." required></textarea>
-              <small><b id="guestMessageCount">0</b> / 100</small>
-            </label>
-            <label class="guestbook-honeypot" aria-hidden="true">
-              Website
-              <input id="guestWebsite" name="website" type="text" tabindex="-1" autocomplete="off">
-            </label>
-            <button id="guestbookSubmit" type="submit">마음 남기기 ♡</button>
-            <p id="guestbookStatus" class="guestbook-status" role="status" aria-live="polite"></p>
-          </form>
-
-          <div class="guestbook-wall">
-            <div class="guestbook-wall-head">
-              <span>우주에게 도착한 마음</span>
-            </div>
-            <div id="guestbookList" class="guestbook-list">
-              <p class="guestbook-empty">메시지를 불러오는 중이에요…</p>
-            </div>
-            <button id="guestbookMore" class="guestbook-more" type="button" hidden>더 많은 마음 보기</button>
-          </div>
-        </div>
       </article>
     </section>
 
@@ -193,7 +156,6 @@
   <dialog id="lightbox"><button class="close" aria-label="사진 닫기">×</button><img alt="확대 사진"><p></p></dialog>
   <dialog id="movieModal"><button class="close" aria-label="영상 닫기">×</button><video id="growthMovie" controls playsinline preload="metadata" poster="assets/images/movie-poster-v2.jpg"><source src="assets/video/woojoo-full.mp4" type="video/mp4"></video></dialog>
   <div id="toast" role="status" aria-live="polite"></div>
-  <script src="guestbook-config.js"></script>
   <script src="script.js"></script>
 </body>
 </html>

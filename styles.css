@@ -166,3 +166,37 @@ button,.actions a,.scroll-cue{-webkit-tap-highlight-color:transparent}
   #movieBtn.movie-album .movie-cover>strong{max-width:78%;font-size:25px}
   #movieBtn.movie-album .movie-badge{left:14px;top:14px;font-size:8px}
 }
+
+
+/* Sprint 12.2 — seamless single-file growth movie */
+#movieBtn.movie-album .movie-cover>strong{
+  left:20px;
+  right:56%;
+  bottom:44px;
+  max-width:none;
+  font-size:26px;
+  line-height:1.28;
+}
+#movieModal{padding:calc(58px + env(safe-area-inset-top)) 14px calc(20px + env(safe-area-inset-bottom));}
+#movieModal video{
+  width:auto;
+  height:min(86vh, calc(92vw * 16 / 9));
+  max-width:92vw;
+  max-height:86vh;
+  aspect-ratio:9 / 16;
+  object-fit:contain;
+  background:#000;
+  border-radius:18px;
+}
+@media(max-width:560px){
+  #movieBtn.movie-album .movie-cover>strong{
+    left:16px;
+    right:55%;
+    bottom:38px;
+    max-width:none;
+    font-size:20px;
+    line-height:1.3;
+  }
+  #movieBtn.movie-album .movie-play{width:56px;height:56px;}
+  #movieModal video{height:min(84vh, calc(94vw * 16 / 9));max-width:94vw;max-height:84vh;border-radius:14px;}
+}

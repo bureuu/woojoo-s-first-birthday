@@ -20,3 +20,10 @@ GitHub Pages 배포 주소가 확정되면 `index.html`의 `og:url`, `og:image`�
 - 16:9 웹 전용 포스터 최적화 및 모바일 크롭 보정
 - 포스터 오버레이, 재생 버튼, 포커스/호버 효과 마감
 - 영상 모달 poster 경로 동기화
+
+
+## Sprint 12.2
+- Movie title shortened to `우주의 성장이야기` and resized to avoid the center play button.
+- Replaced the three sequential movie parts with one H.264/AAC MP4 (`assets/video/woojoo-full.mp4`).
+- Kept the original 720×1280 9:16 frame so the full video is visible without cropping or side letterboxing.
+- Added web-friendly `faststart` metadata and simplified movie playback logic.

@@ -23,20 +23,22 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div id="opening" class="opening" aria-hidden="true">
+  <div id="opening" class="opening" aria-hidden="false">
     <div class="opening-glow"></div>
     <div class="opening-content">
       <p>2025.08.23</p>
       <h1>우주가 태어난 날</h1>
       <span></span>
       <strong><b id="dayCounter">1</b>일의 사랑</strong>
+      <button id="enterBtn" class="enter-btn" type="button">초대장 열기 ♡</button>
+      <small class="enter-note">음악과 함께 시작됩니다</small>
     </div>
   </div>
 
-  <button id="musicBtn" class="music is-pending" aria-label="배경음악 준비 중" aria-pressed="false">
-    <span class="disc">♪</span><small>BGM 준비중</small>
+  <button id="musicBtn" class="music" aria-label="배경음악 켜기" aria-pressed="false">
+    <span class="disc">♪</span><small>MUSIC</small>
   </button>
-  <audio id="bgm" loop preload="none"></audio>
+  <audio id="bgm" loop preload="metadata"><source src="assets/music/woojoo-bgm.mp3" type="audio/mpeg"></audio>
 
   <main>
     <section class="hero" aria-label="초대장 표지">
@@ -110,7 +112,7 @@
           <i class="movie-wash"></i>
           <span class="movie-badge">WOOJOO · FIRST YEAR FILM</span>
           <span class="movie-play">▶</span>
-          <strong>우주의 성장이야기</strong>
+          <strong>우주의<br>성장 이야기</strong>
           <small>2025.08.23 — 2026.08.22</small>
         </span>
         <span class="movie-copy">

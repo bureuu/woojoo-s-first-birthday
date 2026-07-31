@@ -200,3 +200,18 @@ button,.actions a,.scroll-cue{-webkit-tap-highlight-color:transparent}
   #movieBtn.movie-album .movie-play{width:56px;height:56px;}
   #movieModal video{height:min(84vh, calc(94vw * 16 / 9));max-width:94vw;max-height:84vh;border-radius:14px;}
 }
+
+
+/* Sprint 12.3 — BGM welcome + fixed movie title */
+.opening-content .enter-btn{
+  display:block;margin:30px auto 0;padding:13px 24px;border:1px solid rgba(201,173,120,.58);
+  border-radius:999px;background:rgba(255,255,255,.72);color:var(--brown);
+  font:500 13px/1 "Noto Sans KR",sans-serif;letter-spacing:.04em;cursor:pointer;
+  box-shadow:0 10px 28px rgba(91,74,66,.09);backdrop-filter:blur(10px);
+}
+.opening-content .enter-btn:active{transform:scale(.98)}
+.opening-content .enter-note{display:block;margin-top:10px;color:var(--muted);font:400 10px/1.5 "Noto Sans KR",sans-serif;letter-spacing:.04em}
+#movieBtn.movie-album .movie-cover>strong{right:56%;font-size:25px;line-height:1.28;white-space:normal}
+@media(max-width:560px){
+  #movieBtn.movie-album .movie-cover>strong{left:16px;right:58%;bottom:36px;font-size:19px;line-height:1.32}
+}

@@ -2,6 +2,7 @@ const $ = (s, root=document) => root.querySelector(s);
 const $$ = (s, root=document) => [...root.querySelectorAll(s)];
 
 const opening = $('#opening');
+const enterBtn = $('#enterBtn');
 const counter = $('#dayCounter');
 let count = 1;
 const counterTimer = setInterval(() => {
@@ -9,7 +10,6 @@ const counterTimer = setInterval(() => {
   counter.textContent = count;
   if (count >= 365) clearInterval(counterTimer);
 }, 55);
-setTimeout(() => opening?.classList.add('hide'), 2800);
 
 const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
@@ -27,15 +27,53 @@ function showToast(message){
 const musicBtn = $('#musicBtn');
 const bgm = $('#bgm');
 const hasBgm = Boolean(bgm.querySelector('source')?.getAttribute('src'));
-if (!hasBgm) musicBtn.title = '최종 BGM 음원 선정 후 연결됩니다.';
-musicBtn.addEventListener('click', async () => {
-  if (!hasBgm) return showToast('최종 BGM을 선정 중입니다.');
-  try {
-    if (bgm.paused) { await bgm.play(); musicBtn.classList.add('playing'); musicBtn.setAttribute('aria-pressed','true'); }
-    else { bgm.pause(); musicBtn.classList.remove('playing'); musicBtn.setAttribute('aria-pressed','false'); }
-  } catch { showToast('배경음악 파일이 아직 연결되지 않았습니다.'); }
+const BGM_VOLUME = 0.28;
+bgm.volume = 0;
+
+function syncMusicButton(){
+  const playing = !bgm.paused;
+  musicBtn.classList.toggle('playing', playing);
+  musicBtn.setAttribute('aria-pressed', String(playing));
+  musicBtn.setAttribute('aria-label', playing ? '배경음악 끄기' : '배경음악 켜기');
+}
+function fadeBgm(target, duration=700, pauseAtEnd=false){
+  const startVolume = bgm.volume;
+  const started = performance.now();
+  cancelAnimationFrame(fadeBgm.raf);
+  const tick = now => {
+    const t = Math.min(1, (now-started)/duration);
+    bgm.volume = startVolume + (target-startVolume)*t;
+    if(t < 1) fadeBgm.raf = requestAnimationFrame(tick);
+    else if(pauseAtEnd){ bgm.pause(); syncMusicButton(); }
+  };
+  fadeBgm.raf = requestAnimationFrame(tick);
+}
+async function startBgm(){
+  if(!hasBgm) return;
+  try{
+    bgm.volume = 0;
+    await bgm.play();
+    syncMusicButton();
+    fadeBgm(BGM_VOLUME, 1100);
+  }catch{ showToast('음악 재생 버튼을 눌러주세요.'); }
+}
+
+enterBtn?.addEventListener('click', async () => {
+  opening?.classList.add('hide');
+  opening?.setAttribute('aria-hidden','true');
+  await startBgm();
 });
-bgm.addEventListener('error', () => showToast('배경음악 파일이 아직 연결되지 않았습니다.'));
+
+musicBtn.addEventListener('click', async () => {
+  if (!hasBgm) return showToast('배경음악 파일을 찾을 수 없습니다.');
+  try {
+    if (bgm.paused) await startBgm();
+    else fadeBgm(0, 450, true);
+  } catch { showToast('음악 재생 버튼을 다시 눌러주세요.'); }
+});
+bgm.addEventListener('play', syncMusicButton);
+bgm.addEventListener('pause', syncMusicButton);
+bgm.addEventListener('error', () => showToast('배경음악을 불러오지 못했습니다.'));
 
 const lightbox = $('#lightbox');
 $$('#gallery button').forEach(button => button.addEventListener('click', () => {
@@ -57,18 +95,18 @@ $('#movieBtn').addEventListener('click', () => {
 
 movie.addEventListener('play', () => {
   bgmWasPlaying = !bgm.paused;
-  if (bgmWasPlaying) bgm.pause();
+  if (bgmWasPlaying) fadeBgm(0, 400, true);
 });
 
 movie.addEventListener('ended', () => {
-  if (bgmWasPlaying && hasBgm) bgm.play().catch(() => {});
+  if (bgmWasPlaying && hasBgm) startBgm();
 });
 
 function closeMovie(){
   movie.pause();
   movie.currentTime = 0;
   movieModal.close();
-  if (bgmWasPlaying && hasBgm) bgm.play().catch(() => {});
+  if (bgmWasPlaying && hasBgm) startBgm();
 }
 
 $('.close', movieModal).addEventListener('click', closeMovie);

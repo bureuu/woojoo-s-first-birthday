@@ -27,3 +27,12 @@ GitHub Pages 배포 주소가 확정되면 `index.html`의 `og:url`, `og:image`�
 - Replaced the three sequential movie parts with one H.264/AAC MP4 (`assets/video/woojoo-full.mp4`).
 - Kept the original 720×1280 9:16 frame so the full video is visible without cropping or side letterboxing.
 - Added web-friendly `faststart` metadata and simplified movie playback logic.
+
+
+## Sprint 12.3
+- Welcome 화면의 `초대장 열기 ♡` 버튼으로 BGM 재생 시작
+- 업로드된 피아노 MR을 웹 BGM으로 연결
+- BGM 기본 볼륨 28%, fade-in/fade-out 적용
+- 성장영상 재생 시 BGM fade-out/일시정지, 종료 또는 닫기 시 재개
+- 영상 제목을 `우주의 / 성장 이야기` 두 줄로 고정
+- Sprint 12.2 단일 성장영상 구조 유지

@@ -35,9 +35,9 @@ window.WOOJOO_CONTENT = {
   },
 
   story: [
-    { season:"여름", title:"눈부신 여름날", body:"우주가 우리에게 찾아왔어요.", caption:"처음 만난 여름", image:"assets/images/summer.webp" },
-    { season:"가을", title:"선선한 가을", body:"알록달록 물든 계절처럼 조금씩 자라났어요.", caption:"시원한 가을 산책", image:"assets/images/autumn.jpg" },
-    { season:"겨울", title:"하얀 겨울을 지나며", body:"사랑을 듬뿍 받으며 자랐어요.", caption:"포근한 사랑의 겨울", image:"assets/images/winter.jpg" },
+    { season:"여름", title:"눈부신 여름날", body:"우주가 우리에게 찾아왔어요.", caption:"우리 가족의 행복 시작", image:"assets/images/summer.webp" },
+    { season:"가을", title:"처음 만난 가을", body:"알록달록 물든 계절처럼 조금씩 자라났어요.", caption:"선선한 가을 산책", image:"assets/images/autumn.jpg" },
+    { season:"겨울", title:"포근한 겨울", body:"사랑 듬뿍 따뜻한 겨울을 보냈어요.", caption:"생애 첫 크리스마스", image:"assets/images/winter.jpg" },
     { season:"봄", title:"봄꽃처럼 활짝 피어난 미소", body:"그리고 첫 번째 생일이 찾아왔습니다.", caption:"첫 번째 생일을 기다리며", image:"assets/images/spring.webp" }
   ],
 
@@ -76,8 +76,8 @@ window.WOOJOO_CONTENT = {
     room: "스카이룸",
     addressLine1: "부산 해운대구 해운대해변로 298번길 24",
     addressLine2: "팔레드시즈 지하 1층",
-    subway: "해운대역 3번 출구",
-    subwayNote: "도보 이동 후 팔레드시즈 지하 1층",
+    subway: "해운대역 3,5번 출구",
+    subwayNote: "해운대해수욕장 방면 500m 직진 → 해변산책로 왼쪽으로 400m 이동 → 팔레드시즈 콘도(파라다이스호텔 옆) 상가엘리베이터 이용, 지하 1층",
     venueNote: "스카이룸",
     copyAddress: "부산 해운대구 해운대해변로 298번길 24 팔레드시즈 지하 1층",
     mapUrl: "https://map.kakao.com/?q=더파티%20프리미엄%20해운대점"

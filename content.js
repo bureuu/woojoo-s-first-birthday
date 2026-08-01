@@ -75,10 +75,10 @@ window.WOOJOO_CONTENT = {
     venue: "더파티 프리미엄 해운대점",
     room: "스카이룸",
     addressLine1: "부산 해운대구 해운대해변로 298번길 24",
-    addressLine2: "팔레드시즈 지하 1층 · 해운대역 3번 출구",
+    addressLine2: "팔레드시즈 지하 1층",
     subway: "해운대역 3번 출구",
     subwayNote: "도보 이동 후 팔레드시즈 지하 1층",
-    venueNote: "스카이룸 · 부산 해운대구 해운대해변로 298번길 24",
+    venueNote: "스카이룸",
     copyAddress: "부산 해운대구 해운대해변로 298번길 24 팔레드시즈 지하 1층",
     mapUrl: "https://map.kakao.com/?q=더파티%20프리미엄%20해운대점"
   },

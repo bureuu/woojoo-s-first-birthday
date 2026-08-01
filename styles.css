@@ -222,3 +222,18 @@ body{word-break:keep-all;overflow-wrap:break-word;-webkit-text-size-adjust:100%;
 h1,h2,h3,.body-copy,.chapter-copy p,.movie-copy,.event-card,.footer-copy{word-break:keep-all;overflow-wrap:break-word}
 .hero-copy h1,.movie-cover>strong,.date-display span{word-break:keep-all}
 @media(max-width:420px){.body-copy{font-size:15px;line-height:2}.chapter-copy h3{font-size:28px}.movie-cover>strong{font-size:23px!important;line-height:1.32!important}.event-card dd{line-height:1.75}}
+
+
+/* Sprint 13 Final stability patch */
+html { -webkit-text-size-adjust: 100%; }
+body { overflow-wrap: break-word; word-break: keep-all; }
+img, video { max-width: 100%; }
+button, a { -webkit-tap-highlight-color: transparent; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

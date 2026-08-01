@@ -36,8 +36,8 @@ window.WOOJOO_CONTENT = {
 
   story: [
     { season:"여름", title:"눈부신 여름날", body:"우주가 우리에게 찾아왔어요.", caption:"처음 만난 여름", image:"assets/images/summer.webp" },
-    { season:"가을", title:"선선한 가을", body:"알록달록 물든 계절처럼 조금씩 자라났어요.", caption:"시원한 가을 산책", image:"assets/images/autumn.webp" },
-    { season:"겨울", title:"하얀 겨울을 지나며", body:"사랑을 듬뿍 받으며 자랐어요.", caption:"포근한 사랑의 겨울", image:"assets/images/winter.webp" },
+    { season:"가을", title:"선선한 가을", body:"알록달록 물든 계절처럼 조금씩 자라났어요.", caption:"시원한 가을 산책", image:"assets/images/autumn.jpg" },
+    { season:"겨울", title:"하얀 겨울을 지나며", body:"사랑을 듬뿍 받으며 자랐어요.", caption:"포근한 사랑의 겨울", image:"assets/images/winter.jpg" },
     { season:"봄", title:"봄 꽃처럼 활짝 피어난 미소", body:"그리고 첫 번째 생일이 찾아왔습니다.", caption:"첫 번째 생일을 기다리며", image:"assets/images/spring.webp" }
   ],
 
